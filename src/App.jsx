@@ -39,7 +39,7 @@ export default function App() {
     if (!isLanding) return;
     
     const handleScroll = () => {
-      const sections = ['services', 'industries', 'process', 'about', 'contact'];
+      const sections = ['services', 'process', 'about', 'contact'];
       const scrollPosition = window.scrollY + 120; // header height offset
 
       for (const section of sections) {
@@ -171,7 +171,6 @@ export default function App() {
         {isLanding && (
           <div className="hide-mobile" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <a href="#services" className={`landing-nav-link ${activeSection === 'services' ? 'active' : ''}`}>Services</a>
-            <a href="#industries" className={`landing-nav-link ${activeSection === 'industries' ? 'active' : ''}`}>Industries</a>
             <a href="#process" className={`landing-nav-link ${activeSection === 'process' ? 'active' : ''}`}>Our Process</a>
             <a href="#about" className={`landing-nav-link ${activeSection === 'about' ? 'active' : ''}`}>About</a>
             <a href="#contact" className={`landing-nav-link ${activeSection === 'contact' ? 'active' : ''}`}>Contact</a>

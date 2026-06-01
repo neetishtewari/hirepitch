@@ -153,99 +153,6 @@ export default function LandingPage() {
       </section>
 
       {/* ==========================================
-         SOURCING VELOCITY SIMULATOR (INTERACTIVE WIDGET)
-         ========================================== */}
-      <section id="process" style={{ padding: '100px 24px', background: 'transparent' }} className="scroll-reveal">
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span style={{ color: 'var(--color-gold)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Process Timeline</span>
-            <h2 style={{ fontSize: '2.4rem', color: '#fff', fontFamily: 'var(--font-serif)', fontWeight: '500', marginTop: '8px' }}>
-              Hiring Velocity Timeline
-            </h2>
-            <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '12px', maxWidth: '600px', margin: '12px auto 0 auto', fontWeight: '300', lineHeight: '1.6' }}>
-              Adjust the timeline below to see how our process quickly filters candidate pools to select the finest talent for your team.
-            </p>
-          </div>
-
-          <div className="dark-card" style={{ padding: '40px', border: '1px solid rgba(255,255,255,0.06)' }}>
-            
-            {/* Slider control */}
-            <div style={{ marginBottom: '40px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '14px', alignItems: 'center' }}>
-                <span style={{ fontSize: '0.8rem', color: '#cbd5e1', fontWeight: '600', letterSpacing: '0.05em' }}>SEARCH TIMELINE:</span>
-                <span style={{ fontSize: '1.4rem', color: 'var(--color-gold)', fontWeight: '700', fontFamily: 'var(--font-serif)' }}>
-                  {sourcingDays} {sourcingDays === 1 ? 'Day' : 'Days'}
-                </span>
-              </div>
-              <input 
-                type="range" 
-                min="1" 
-                max="10" 
-                value={sourcingDays}
-                onChange={e => setSourcingDays(e.target.value)}
-                className="cyber-slider"
-              />
-            </div>
-
-            {/* Visual node grid */}
-            <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '40px 0', minHeight: '80px' }}>
-              <div className="node-line"></div>
-              
-              {/* Node 1 */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                <div className={`node-dot ${sourcingDays >= 1 ? 'active' : ''}`}>
-                  {sourcingDays >= 1 && <div className="pulsing-glow"></div>}
-                  {mappedCount}
-                </div>
-                <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Identified</span>
-              </div>
-
-              {/* Node 2 */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                <div className={`node-dot ${sourcingDays >= 3 ? 'success' : sourcingDays >= 2 ? 'active' : ''}`}>
-                  {sourcingDays >= 3 && <div className="pulsing-glow"></div>}
-                  {screenedCount}
-                </div>
-                <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Vetted</span>
-              </div>
-
-              {/* Node 3 */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                <div className={`node-dot ${sourcingDays >= 5 ? 'success' : sourcingDays >= 4 ? 'active' : ''}`}>
-                  {sourcingDays >= 5 && <div className="pulsing-glow"></div>}
-                  {shortlistsCount}
-                </div>
-                <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Shortlisted</span>
-              </div>
-            </div>
-
-            {/* Dynamic summary text */}
-            <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '0px', padding: '24px', fontSize: '0.925rem', color: '#cbd5e1', lineHeight: '1.7' }}>
-              <h4 style={{ color: '#fff', fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Hiring Progress Summary:</h4>
-              By day <strong style={{ color: 'var(--color-gold)' }}>{sourcingDays}</strong>, we map <strong style={{ color: '#fff' }}>{mappedCount} professionals</strong> across the industry. Through our screening process, we select the top <strong style={{ color: '#fff' }}>{screenedCount} qualified candidates</strong>, and deliver a curated shortlist of <strong style={{ color: 'var(--color-gold)' }}>{shortlistsCount} candidates</strong> ready for your review.
-            </div>
-
-            {/* Active search feed list */}
-            <div style={{ marginTop: '28px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px' }}>
-              <div style={{ fontSize: '0.75rem', color: '#71717a', fontWeight: '700', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Search Mandate Examples:</div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#94a3b8' }}>
-                  <span style={{ flex: 1 }}>• Engineering Leadership Mandate</span>
-                  <span style={{ color: 'var(--color-gold)', fontFamily: 'monospace', fontWeight: '600' }}>Shortlist Delivered (3 Candidates)</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#94a3b8' }}>
-                  <span style={{ flex: 1 }}>• Technical Lead Architect</span>
-                  <span style={{ color: 'var(--color-gold-dark)', fontFamily: 'monospace', fontWeight: '600' }}>Screening & Vetting (2 Candidates)</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
          HOW WE WORK SECTION
          ========================================== */}
       <section id="services" style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.3)' }} className="scroll-reveal">
@@ -346,73 +253,6 @@ export default function LandingPage() {
       </section>
 
       {/* ==========================================
-         SERVICES (ENGAGEMENT MODELS) SECTION
-         ========================================== */}
-      <section id="industries" style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.5)', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }} className="scroll-reveal">
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          
-          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <span style={{ color: 'var(--color-gold)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Services Section</span>
-            <h2 style={{ fontSize: '2.4rem', color: '#fff', fontFamily: 'var(--font-serif)', fontWeight: '500', marginTop: '8px' }}>
-              Flexible engagement models
-            </h2>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px', alignItems: 'stretch' }}>
-            
-            {/* Contingency Search */}
-            <div className="glass-panel" style={{ padding: '40px 32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: '500', color: '#fff', fontFamily: 'var(--font-serif)' }}>Contingency Search</h3>
-                <p style={{ color: '#cbd5e1', fontSize: '0.9rem', marginTop: '8px', lineHeight: '1.5', fontWeight: '300' }}>For individual contributor and mid-to-senior hiring needs.</p>
-              </div>
-              <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }}></div>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', fontSize: '0.9rem', color: '#94a3b8' }}>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Success-based pricing</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Curated candidate shortlists</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Transparent hiring process</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Placement guarantee</li>
-              </ul>
-            </div>
-
-            {/* Retained Search */}
-            <div className="glass-panel" style={{ padding: '40px 32px', background: 'rgba(24, 25, 31, 0.75)', border: '1px solid var(--color-gold)', transform: 'scale(1.03)', boxShadow: '0 20px 40px -15px rgba(197, 162, 93, 0.12)', display: 'flex', flexDirection: 'column', gap: '24px', position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: 'var(--color-gold)', color: '#0c0d10', padding: '4px 14px', borderRadius: '0px', fontSize: '0.75rem', fontWeight: '700', letterSpacing: '0.05em' }}>
-                RECOMMENDED
-              </div>
-              <div>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: '500', color: '#fff', fontFamily: 'var(--font-serif)' }}>Retained Executive Search</h3>
-                <p style={{ color: '#cbd5e1', fontSize: '0.9rem', marginTop: '8px', lineHeight: '1.5', fontWeight: '300' }}>For leadership, principal, director, and executive roles.</p>
-              </div>
-              <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }}></div>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', fontSize: '0.9rem', color: '#cbd5e1' }}>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Dedicated search team</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Deep market mapping</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Executive-level assessment</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Extended replacement guarantee</li>
-              </ul>
-            </div>
-
-            {/* Embedded Recruitment Partner */}
-            <div className="glass-panel" style={{ padding: '40px 32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: '500', color: '#fff', fontFamily: 'var(--font-serif)' }}>Embedded Recruitment Partner</h3>
-                <p style={{ color: '#cbd5e1', fontSize: '0.9rem', marginTop: '8px', lineHeight: '1.5', fontWeight: '300' }}>An extension of your internal hiring team.</p>
-              </div>
-              <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)' }}></div>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', listStyle: 'none', fontSize: '0.9rem', color: '#94a3b8' }}>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Dedicated recruiters</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Weekly hiring reviews</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> ATS integration</li>
-                <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Check size={16} style={{ color: 'var(--color-gold)', flexShrink: 0 }} /> Scale up or down as needed</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ==========================================
          TESTIMONIALS SECTION
          ========================================== */}
       <section id="about" style={{ padding: '100px 24px', background: 'transparent' }} className="scroll-reveal">
@@ -465,6 +305,100 @@ export default function LandingPage() {
 
           </div>
         </div>
+
+      </section>
+
+      {/* ==========================================
+         SOURCING VELOCITY SIMULATOR (INTERACTIVE WIDGET)
+         ========================================== */}
+      <section id="process" style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.3)', borderTop: '1px solid rgba(255,255,255,0.06)' }} className="scroll-reveal">
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <span style={{ color: 'var(--color-gold)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Process Timeline</span>
+            <h2 style={{ fontSize: '2.4rem', color: '#fff', fontFamily: 'var(--font-serif)', fontWeight: '500', marginTop: '8px' }}>
+              Hiring Velocity Timeline
+            </h2>
+            <p style={{ color: '#94a3b8', fontSize: '1rem', marginTop: '12px', maxWidth: '600px', margin: '12px auto 0 auto', fontWeight: '300', lineHeight: '1.6' }}>
+              Adjust the timeline below to see how our process quickly filters candidate pools to select the finest talent for your team.
+            </p>
+          </div>
+
+          <div className="dark-card" style={{ padding: '40px', border: '1px solid rgba(255,255,255,0.06)' }}>
+            
+            {/* Slider control */}
+            <div style={{ marginBottom: '40px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '14px', alignItems: 'center' }}>
+                <span style={{ fontSize: '0.8rem', color: '#cbd5e1', fontWeight: '600', letterSpacing: '0.05em' }}>SEARCH TIMELINE:</span>
+                <span style={{ fontSize: '1.4rem', color: 'var(--color-gold)', fontWeight: '700', fontFamily: 'var(--font-serif)' }}>
+                  {sourcingDays} {sourcingDays === 1 ? 'Day' : 'Days'}
+                </span>
+              </div>
+              <input 
+                type="range" 
+                min="1" 
+                max="10" 
+                value={sourcingDays}
+                onChange={e => setSourcingDays(e.target.value)}
+                className="cyber-slider"
+              />
+            </div>
+
+            {/* Visual node grid */}
+            <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '40px 0', minHeight: '80px' }}>
+              <div className="node-line"></div>
+              
+              {/* Node 1 */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                <div className={`node-dot ${sourcingDays >= 1 ? 'active' : ''}`}>
+                  {sourcingDays >= 1 && <div className="pulsing-glow"></div>}
+                  {mappedCount}
+                </div>
+                <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Identified</span>
+              </div>
+
+              {/* Node 2 */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                <div className={`node-dot ${sourcingDays >= 3 ? 'success' : sourcingDays >= 2 ? 'active' : ''}`}>
+                  {sourcingDays >= 3 && <div className="pulsing-glow"></div>}
+                  {screenedCount}
+                </div>
+                <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Vetted</span>
+              </div>
+
+              {/* Node 3 */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                <div className={`node-dot ${sourcingDays >= 5 ? 'success' : sourcingDays >= 4 ? 'active' : ''}`}>
+                  {sourcingDays >= 5 && <div className="pulsing-glow"></div>}
+                  {shortlistsCount}
+                </div>
+                <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: '600', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Shortlisted</span>
+              </div>
+            </div>
+
+            {/* Dynamic summary text */}
+            <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '0px', padding: '24px', fontSize: '0.925rem', color: '#cbd5e1', lineHeight: '1.7' }}>
+              <h4 style={{ color: '#fff', fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Hiring Progress Summary:</h4>
+              By day <strong style={{ color: 'var(--color-gold)' }}>{sourcingDays}</strong>, we map <strong style={{ color: '#fff' }}>{mappedCount} professionals</strong> across the industry. Through our screening process, we select the top <strong style={{ color: '#fff' }}>{screenedCount} qualified candidates</strong>, and deliver a curated shortlist of <strong style={{ color: 'var(--color-gold)' }}>{shortlistsCount} candidates</strong> ready for your review.
+            </div>
+
+            {/* Active search feed list */}
+            <div style={{ marginTop: '28px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '20px' }}>
+              <div style={{ fontSize: '0.75rem', color: '#71717a', fontWeight: '700', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Search Mandate Examples:</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#94a3b8' }}>
+                  <span style={{ flex: 1 }}>• Engineering Leadership Mandate</span>
+                  <span style={{ color: 'var(--color-gold)', fontFamily: 'monospace', fontWeight: '600' }}>Shortlist Delivered (3 Candidates)</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#94a3b8' }}>
+                  <span style={{ flex: 1 }}>• Technical Lead Architect</span>
+                  <span style={{ color: 'var(--color-gold-dark)', fontFamily: 'monospace', fontWeight: '600' }}>Screening & Vetting (2 Candidates)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
 
       {/* ==========================================
@@ -474,7 +408,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: '2.4rem', color: '#fff', fontFamily: 'var(--font-serif)', fontWeight: '500' }}>Vetting & Telemetry FAQs</h2>
+            <h2 style={{ fontSize: '2.4rem', color: '#fff', fontFamily: 'var(--font-serif)', fontWeight: '500' }}>Frequently Asked Questions</h2>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
