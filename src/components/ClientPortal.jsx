@@ -23,7 +23,7 @@ export default function ClientPortal({ candidates, onBack, apiKey, initialCandid
         {
           id: "initial",
           sender: "ai",
-          text: `Hello! I am your HirePitch AI assistant. I have reviewed ${initialCandidate.name}'s profile and pre-screening transcripts for the **${initialCandidate.jobMatch.title}** role. Ask me anything about their technical depth, soft skills, or experience.`
+          text: `Hello! I am your PitchHire AI assistant. I have reviewed ${initialCandidate.name}'s profile and pre-screening transcripts for the **${initialCandidate.jobMatch.title}** role. Ask me anything about their technical depth, soft skills, or experience.`
         }
       ]);
     } else {
@@ -116,7 +116,7 @@ export default function ClientPortal({ candidates, onBack, apiKey, initialCandid
       {
         id: "initial",
         sender: "ai",
-        text: `Hello! I am your HirePitch AI assistant. I have reviewed ${candidate.name}'s profile and pre-screening transcripts for the **${candidate.jobMatch.title}** role. Ask me anything about their technical depth, soft skills, or experience.`
+        text: `Hello! I am your PitchHire AI assistant. I have reviewed ${candidate.name}'s profile and pre-screening transcripts for the **${candidate.jobMatch.title}** role. Ask me anything about their technical depth, soft skills, or experience.`
       }
     ]);
   };
@@ -424,7 +424,7 @@ export default function ClientPortal({ candidates, onBack, apiKey, initialCandid
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Presented by</span>
-          <span style={{ fontWeight: '700', color: 'var(--color-primary)', fontSize: '0.9rem' }}>HirePitch AI Portal</span>
+          <span style={{ fontWeight: '700', color: 'var(--color-primary)', fontSize: '0.9rem' }}>PitchHire AI Portal</span>
         </div>
       </div>
 
@@ -613,7 +613,7 @@ export default function ClientPortal({ candidates, onBack, apiKey, initialCandid
                 }}
               >
                 <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', alignSelf: m.sender === 'user' ? 'flex-end' : 'flex-start', fontWeight: '500' }}>
-                  {m.sender === 'user' ? 'You' : 'HirePitch Recruiter AI'}
+                  {m.sender === 'user' ? 'You' : 'PitchHire Recruiter AI'}
                 </div>
                 <div 
                   style={{

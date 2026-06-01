@@ -14,7 +14,7 @@ export default function App() {
   const [clientFilter, setClientFilter] = useState(null);
   const [isClientSession, setIsClientSession] = useState(false);
   const [apiKey, setApiKey] = useState(() => {
-    return localStorage.getItem('hirepitch_gemini_key') || localStorage.getItem('pitchhire_gemini_key') || '';
+    return localStorage.getItem('pitchhire_gemini_key') || localStorage.getItem('hirepitch_gemini_key') || '';
   });
 
   const [activeSection, setActiveSection] = useState('');
@@ -65,7 +65,7 @@ export default function App() {
   // Save API key
   const handleSaveApiKey = (key) => {
     setApiKey(key);
-    localStorage.setItem('hirepitch_gemini_key', key);
+    localStorage.setItem('pitchhire_gemini_key', key);
   };
 
   const handleAddCandidate = (candidate) => {
@@ -124,15 +124,6 @@ export default function App() {
           {isLanding ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <span style={{
-                fontFamily: 'var(--font-sans)',
-                fontWeight: '800',
-                fontSize: '1.4rem',
-                letterSpacing: '-0.02em',
-                color: '#ffffff'
-              }}>
-                Hire
-              </span>
-              <span style={{
                 fontFamily: 'var(--font-serif)',
                 fontWeight: '600',
                 fontSize: '1.5rem',
@@ -141,12 +132,21 @@ export default function App() {
               }}>
                 Pitch
               </span>
+              <span style={{
+                fontFamily: 'var(--font-sans)',
+                fontWeight: '800',
+                fontSize: '1.4rem',
+                letterSpacing: '-0.02em',
+                color: '#ffffff'
+              }}>
+                Hire
+              </span>
             </div>
           ) : (
             <>
               <img 
                 src={logoImg} 
-                alt="HirePitch Logo" 
+                alt="PitchHire Logo" 
                 style={{ 
                   width: '32px', 
                   height: '32px', 
@@ -161,7 +161,7 @@ export default function App() {
                 letterSpacing: '-0.025em',
                 color: 'var(--text-main)'
               }}>
-                HirePitch
+                PitchHire
               </span>
             </>
           )}
@@ -285,7 +285,7 @@ export default function App() {
           borderTop: '1px solid var(--border-light)',
           background: '#fff'
         }}>
-          © 2026 HirePitch. Elevating startup sourcing with high-leverage artificial intelligence. (Registered: hirepitch.in)
+          © 2026 PitchHire. Elevating startup sourcing with high-leverage artificial intelligence. (Registered: pitchhire.in)
         </footer>
       )}
     </div>

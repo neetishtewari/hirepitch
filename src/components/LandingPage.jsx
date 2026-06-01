@@ -41,7 +41,7 @@ export default function LandingPage() {
 
   const faqs = [
     {
-      q: "Why is HirePitch different from traditional recruitment agencies?",
+      q: "Why is PitchHire different from traditional recruitment agencies?",
       a: "Most agencies optimize for volume. We optimize for outcomes. Our focus is identifying high-performing talent, validating fit early, and maintaining complete transparency throughout the hiring process."
     },
     {
@@ -88,7 +88,7 @@ export default function LandingPage() {
             The best candidates are rarely applying for jobs.
           </p>
           <p style={{ color: '#cbd5e1', fontSize: '1.1rem', lineHeight: '1.65', margin: 0, fontFamily: 'var(--font-sans)', fontWeight: '300' }}>
-            HirePitch helps ambitious companies identify, engage, vet, and close high-performing talent with speed, accuracy, and complete transparency.
+            PitchHire helps ambitious companies identify, engage, vet, and close high-performing talent with speed, accuracy, and complete transparency.
           </p>
           <p style={{ color: '#ffffff', fontSize: '1.05rem', fontWeight: '600', letterSpacing: '0.02em', margin: 0, fontFamily: 'var(--font-sans)' }}>
             No resume spam. No black-box recruiting. Just exceptional hires.
@@ -307,7 +307,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <span style={{ color: 'var(--color-gold)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Why HirePitch</span>
+            <span style={{ color: 'var(--color-gold)', fontWeight: '700', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Why PitchHire</span>
             <h2 style={{ fontSize: '2.4rem', color: '#fff', fontFamily: 'var(--font-serif)', fontWeight: '500', marginTop: '8px' }}>
               Recruitment built for modern teams
             </h2>
@@ -432,7 +432,7 @@ export default function LandingPage() {
                 <Award size={16} /><Award size={16} /><Award size={16} /><Award size={16} /><Award size={16} />
               </div>
               <p style={{ fontStyle: 'italic', color: '#cbd5e1', lineHeight: '1.65', fontSize: '0.95rem', fontWeight: '300' }}>
-                &ldquo;HirePitch delivered quality over quantity. Instead of dozens of resumes, we received a handful of thoroughly vetted candidates and closed the role in less than two weeks.&rdquo;
+                &ldquo;PitchHire delivered quality over quantity. Instead of dozens of resumes, we received a handful of thoroughly vetted candidates and closed the role in less than two weeks.&rdquo;
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
                 <div style={{ width: '40px', height: '40px', borderRadius: '0px', border: '1px solid rgba(197, 162, 93, 0.25)', background: 'rgba(197, 162, 93, 0.05)', color: 'var(--color-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontFamily: 'var(--font-serif)' }}>
@@ -517,7 +517,7 @@ export default function LandingPage() {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
               <p style={{ color: '#cbd5e1', fontSize: '1.05rem', fontWeight: '300', lineHeight: '1.5', margin: 0 }}>
-                Whether you're hiring your first key employee or scaling an entire department, HirePitch helps you move faster with confidence.
+                Whether you're hiring your first key employee or scaling an entire department, PitchHire helps you move faster with confidence.
               </p>
               <p style={{ color: 'var(--color-gold)', fontSize: '1rem', fontWeight: '600', margin: 0 }}>
                 Book a discovery call and start your search today.
@@ -667,19 +667,19 @@ export default function LandingPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <span style={{ fontSize: '1.4rem', letterSpacing: '-0.025em', display: 'flex', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'var(--font-heading)', fontWeight: '800', color: '#fff' }}>
-                  Hire
-                </span>
-                <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: '#e9c37a', fontWeight: '600', marginLeft: '2px' }}>
+                <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: '#e9c37a', fontWeight: '600' }}>
                   Pitch
+                </span>
+                <span style={{ fontFamily: 'var(--font-heading)', fontWeight: '800', color: '#fff', marginLeft: '2px' }}>
+                  Hire
                 </span>
               </span>
             </div>
             <p style={{ fontSize: '0.85rem', lineHeight: '1.65', color: '#cbd5e1', fontWeight: '300' }}>
-              HirePitch helps ambitious companies identify, engage, vet, and close high-performing talent with speed, accuracy, and complete transparency.
+              PitchHire helps ambitious companies identify, engage, vet, and close high-performing talent with speed, accuracy, and complete transparency.
             </p>
             <p style={{ fontSize: '0.85rem', color: '#52525b' }}>
-              Registered domain: hirepitch.in
+              Registered domain: pitchhire.in
             </p>
           </div>
 
@@ -704,19 +704,19 @@ export default function LandingPage() {
           <div>
             <h4 style={{ color: '#fff', fontSize: '0.8rem', fontWeight: '700', marginBottom: '20px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Office</h4>
             <p style={{ fontSize: '0.85rem', lineHeight: '1.65', color: '#94a3b8', fontWeight: '300' }}>
-              HirePitch Sourcing Ltd.<br />
+              PitchHire Sourcing Ltd.<br />
               Varthur Hobli, Bengaluru,<br />
               Karnataka 560087, India
             </p>
             <p style={{ fontSize: '0.85rem', color: 'var(--color-gold)', marginTop: '12px', fontWeight: '600' }}>
-              partners@hirepitch.in
+              partners@pitchhire.in
             </p>
           </div>
 
         </div>
 
         <div style={{ maxWidth: '1100px', margin: '0 auto', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '28px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', fontSize: '0.8rem' }}>
-          <span>© 2026 HirePitch. All rights reserved. Registered in India.</span>
+          <span>© 2026 PitchHire. All rights reserved. Registered in India.</span>
           <div style={{ display: 'flex', gap: '24px' }}>
             <a href="#" className="footer-link" style={{ fontSize: '0.8rem' }}>Privacy Policy</a>
             <a href="#" className="footer-link" style={{ fontSize: '0.8rem' }}>Terms of Service</a>

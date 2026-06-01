@@ -216,7 +216,7 @@ export const aiService = {
       try {
         const ai = new GoogleGenAI({ apiKey });
         const systemPrompt = `
-          You are an elite AI Recruiter representing the hiring consultancy 'HirePitch'.
+          You are an elite AI Recruiter representing the hiring consultancy 'PitchHire'.
           You have access to a specific candidate's profile who is currently being presented to a hiring manager.
           
           CANDIDATE INFORMATION:
@@ -283,7 +283,7 @@ export const aiService = {
       try {
         const ai = new GoogleGenAI({ apiKey });
         const prompt = `
-          Generate a HirePitch AI Match Analysis for a candidate based on their Resume and Target Job Description.
+          Generate a PitchHire AI Match Analysis for a candidate based on their Resume and Target Job Description.
           
           CANDIDATE NAME: ${candidateName}
           

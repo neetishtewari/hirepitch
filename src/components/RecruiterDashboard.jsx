@@ -155,7 +155,7 @@ export default function RecruiterDashboard({
       {
         sender: "aditi.rao@gmail.com",
         subject: "Application for Principal Frontend Architect - Aditi Rao",
-        body: "Hello HirePitch team, I am applying for the Frontend Architect role at Stripe. Please find my CV attached. I specialize in Next.js, design systems, and web vitals performance optimization. I prefer hybrid work in SF.",
+        body: "Hello PitchHire team, I am applying for the Frontend Architect role at Stripe. Please find my CV attached. I specialize in Next.js, design systems, and web vitals performance optimization. I prefer hybrid work in SF.",
         candidateName: "Aditi Rao",
         targetJob: "Principal Frontend Architect",
         targetCompany: "Stripe",
@@ -588,7 +588,7 @@ export default function RecruiterDashboard({
                 <Mail size={18} color="var(--color-secondary)" />
                 AI Email Listener
               </h2>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px' }}>Simulating mailbox <code style={{ fontSize: '0.75rem', padding: '1px 4px' }}>hiring@hirepitch.in</code></p>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px' }}>Simulating mailbox <code style={{ fontSize: '0.75rem', padding: '1px 4px' }}>hiring@pitchhire.in</code></p>
             </div>
             <button 
               className="btn btn-secondary" 
