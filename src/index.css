@@ -662,8 +662,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Cross-Browser Scroll Reveals */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal-on-scroll.revealed {
@@ -671,7 +671,16 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(0);
 }
 
-/* Cursor-Tracking Magnetic Card Glow */
+/* Scroll reveal delays for staggered cards/text */
+.delay-100 { transition-delay: 100ms !important; }
+.delay-150 { transition-delay: 150ms !important; }
+.delay-200 { transition-delay: 200ms !important; }
+.delay-250 { transition-delay: 250ms !important; }
+.delay-300 { transition-delay: 300ms !important; }
+.delay-400 { transition-delay: 400ms !important; }
+.delay-500 { transition-delay: 500ms !important; }
+
+/* Cursor-Tracking Magnetic Card Glow (Brighter & Larger) */
 .magnetic-glow-card {
   position: relative;
   overflow: hidden;
@@ -685,9 +694,9 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   bottom: 0;
   background: radial-gradient(
-    400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
-    rgba(233, 195, 122, 0.08),
-    transparent 50%
+    450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(233, 195, 122, 0.16),
+    transparent 55%
   );
   z-index: 1;
   pointer-events: none;
@@ -697,6 +706,60 @@ h1, h2, h3, h4, h5, h6 {
 
 .magnetic-glow-card:hover::before {
   opacity: 1;
+}
+
+/* Responsive Footer Grid (Self-contain layout responsiveness) */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+/* Hero Rotating Dynamic Glow Elements */
+.hero-glow-1 {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(233, 195, 122, 0.12) 0%, transparent 65%);
+  filter: blur(50px);
+  z-index: 1;
+  pointer-events: none;
+  animation: rotateGlow1 22s linear infinite;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 65%);
+  filter: blur(70px);
+  z-index: 1;
+  pointer-events: none;
+  animation: rotateGlow2 28s linear infinite;
+}
+
+@keyframes rotateGlow1 {
+  0% { transform: rotate(0deg) translate(0, 0) scale(1); }
+  50% { transform: rotate(180deg) translate(40px, -30px) scale(1.08); }
+  100% { transform: rotate(360deg) translate(0, 0) scale(1); }
+}
+
+@keyframes rotateGlow2 {
+  0% { transform: rotate(0deg) translate(0, 0) scale(1); }
+  50% { transform: rotate(-180deg) translate(-50px, 40px) scale(1.12); }
+  100% { transform: rotate(-360deg) translate(0, 0) scale(1); }
 }
 
 /* Animated Floating Accent Backdrop Blobs */
