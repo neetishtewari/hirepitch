@@ -679,9 +679,6 @@ export default function LandingPage() {
               Varthur Hobli, Bengaluru,<br />
               Karnataka 560087, India
             </p>
-            <p style={{ fontSize: '0.85rem', color: 'var(--color-gold)', marginTop: '12px', fontWeight: '600' }}>
-              partners@pitchhire.in
-            </p>
           </div>
 
         </div>
