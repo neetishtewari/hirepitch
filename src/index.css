@@ -352,11 +352,28 @@ h1, h2, h3, h4, h5, h6 {
 /* Hero Mesh / Corporate Background */
 .hero-mesh-container {
   position: relative;
-  background-image: linear-gradient(to bottom, rgba(12, 13, 16, 0.8) 0%, var(--bg-luxury) 100%), url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80");
-  background-size: cover;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(233, 195, 122, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(233, 195, 122, 0.06) 0%, transparent 40%),
+    linear-gradient(to bottom, rgba(12, 13, 16, 0.85) 0%, var(--bg-luxury) 100%), 
+    url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80");
+  background-size: 200% 200%, 200% 200%, cover, cover;
   background-position: center;
   padding: 130px 24px 100px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  animation: meshFlow 25s ease infinite alternate;
+}
+
+@keyframes meshFlow {
+  0% {
+    background-position: 0% 0%, 100% 100%, center, center;
+  }
+  50% {
+    background-position: 100% 50%, 0% 50%, center, center;
+  }
+  100% {
+    background-position: 0% 100%, 100% 0%, center, center;
+  }
 }
 
 /* Typography styles */
@@ -636,4 +653,113 @@ h1, h2, h3, h4, h5, h6 {
   .hide-mobile {
     display: none !important;
   }
+}
+
+/* ==========================================================================
+   DYNAMIC INTERACTIVE & WOW ANIMATIONS
+   ========================================================================== */
+
+/* Cross-Browser Scroll Reveals */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cursor-Tracking Magnetic Card Glow */
+.magnetic-glow-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.magnetic-glow-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(233, 195, 122, 0.08),
+    transparent 50%
+  );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.magnetic-glow-card:hover::before {
+  opacity: 1;
+}
+
+/* Animated Floating Accent Backdrop Blobs */
+.floating-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.12;
+}
+
+.blob-1 {
+  width: 450px;
+  height: 450px;
+  background: var(--color-gold);
+  top: 15%;
+  left: -120px;
+  animation: floatSlow 28s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  width: 550px;
+  height: 550px;
+  background: #3b82f6; /* Subtle blue/indigo */
+  top: 55%;
+  right: -180px;
+  animation: floatSlow 36s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, 90px) scale(1.12);
+  }
+  100% {
+    transform: translate(-40px, -50px) scale(0.92);
+  }
+}
+
+/* Timeline Active Connector Progress Line */
+.node-line-active {
+  height: 100%;
+  background: var(--color-gold);
+  box-shadow: 0 0 10px rgba(233, 195, 122, 0.5);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.node-dot {
+  transition: border-color 0.4s ease, color 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Smooth FAQ Accordion Easing */
+.faq-answer-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.faq-answer-wrapper.open {
+  max-height: 180px;
+  opacity: 1;
 }

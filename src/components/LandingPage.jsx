@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Sparkles, ShieldCheck, 
   Users, Check, ChevronDown, Award, Volume2
@@ -25,6 +25,37 @@ export default function LandingPage() {
 
   // FAQ
   const [activeFaq, setActiveFaq] = useState(null);
+
+  // IntersectionObserver for scroll-reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  // Hover magnetic glow tracker (sets CSS variables at 60fps)
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  };
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
@@ -59,7 +90,10 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="landing-dark">
+    <div className="landing-dark" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Floating Accent Parallax Blobs */}
+      <div className="floating-blob blob-1"></div>
+      <div className="floating-blob blob-2"></div>
       
       {/* ==========================================
          HERO SECTION: EXCLUSIVE & VELOCITY FOCUSED
@@ -108,7 +142,7 @@ export default function LandingPage() {
       {/* ==========================================
          CONSULTANCY METRICS / STATS SECTION
          ========================================== */}
-      <section style={{ padding: '80px 24px', background: 'rgba(15, 16, 20, 0.65)', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <section className="reveal-on-scroll" style={{ padding: '80px 24px', background: 'rgba(15, 16, 20, 0.65)', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <h2 style={{ fontSize: '2.2rem', color: '#fff', fontFamily: 'var(--font-serif)', fontWeight: '500' }}>
@@ -155,7 +189,7 @@ export default function LandingPage() {
       {/* ==========================================
          HOW WE WORK SECTION
          ========================================== */}
-      <section id="services" style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.3)' }} className="scroll-reveal">
+      <section id="services" style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.3)' }} className="scroll-reveal reveal-on-scroll">
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
@@ -174,32 +208,32 @@ export default function LandingPage() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
-            <div className="glass-panel hover-float" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <div className="feature-icon-wrapper">
+            <div className="glass-panel hover-float magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
+              <div className="feature-icon-wrapper" style={{ position: 'relative', zIndex: 2 }}>
                 <Users size={20} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', fontWeight: '600', color: '#fff', fontFamily: 'var(--font-serif)' }}>1. Talent Mapping</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.65', fontWeight: '300' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', fontWeight: '600', color: '#fff', fontFamily: 'var(--font-serif)', position: 'relative', zIndex: 2 }}>1. Talent Mapping</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.65', fontWeight: '300', position: 'relative', zIndex: 2 }}>
                 We identify and engage talent across relevant companies, industries, and networks.
               </p>
             </div>
 
-            <div className="glass-panel hover-float" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <div className="feature-icon-wrapper">
+            <div className="glass-panel hover-float magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
+              <div className="feature-icon-wrapper" style={{ position: 'relative', zIndex: 2 }}>
                 <Volume2 size={20} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', fontWeight: '600', color: '#fff', fontFamily: 'var(--font-serif)' }}>2. Structured Evaluation</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.65', fontWeight: '300' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', fontWeight: '600', color: '#fff', fontFamily: 'var(--font-serif)', position: 'relative', zIndex: 2 }}>2. Structured Evaluation</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.65', fontWeight: '300', position: 'relative', zIndex: 2 }}>
                 Every candidate is assessed for capability, experience, motivation, and role fit before reaching your desk.
               </p>
             </div>
 
-            <div className="glass-panel hover-float" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <div className="feature-icon-wrapper">
+            <div className="glass-panel hover-float magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
+              <div className="feature-icon-wrapper" style={{ position: 'relative', zIndex: 2 }}>
                 <ShieldCheck size={20} />
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', fontWeight: '600', color: '#fff', fontFamily: 'var(--font-serif)' }}>3. Curated Shortlists</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.65', fontWeight: '300' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', fontWeight: '600', color: '#fff', fontFamily: 'var(--font-serif)', position: 'relative', zIndex: 2 }}>3. Curated Shortlists</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.65', fontWeight: '300', position: 'relative', zIndex: 2 }}>
                 Receive a focused shortlist of highly aligned candidates, complete with screening insights and hiring recommendations.
               </p>
             </div>
@@ -210,7 +244,7 @@ export default function LandingPage() {
       {/* ==========================================
          WHY HIREPITCH SECTION
          ========================================== */}
-      <section style={{ padding: '100px 24px', background: 'transparent' }} className="scroll-reveal">
+      <section style={{ padding: '100px 24px', background: 'transparent' }} className="scroll-reveal reveal-on-scroll">
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
@@ -221,30 +255,30 @@ export default function LandingPage() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '32px' }}>
-            <div className="dark-card hover-float" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)' }}>Speed without sacrificing quality</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0 }}>
+            <div className="dark-card hover-float magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)', position: 'relative', zIndex: 2 }}>Speed without sacrificing quality</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0, position: 'relative', zIndex: 2 }}>
                 Move from search kickoff to qualified candidates in days, not months.
               </p>
             </div>
 
-            <div className="dark-card hover-float" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)' }}>Transparent hiring process</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0 }}>
+            <div className="dark-card hover-float magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)', position: 'relative', zIndex: 2 }}>Transparent hiring process</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0, position: 'relative', zIndex: 2 }}>
                 Know exactly where your search stands at every stage.
               </p>
             </div>
 
-            <div className="dark-card hover-float" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)' }}>Better candidate quality</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0 }}>
+            <div className="dark-card hover-float magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)', position: 'relative', zIndex: 2 }}>Better candidate quality</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0, position: 'relative', zIndex: 2 }}>
                 We prioritize fit, capability, and long-term success over volume.
               </p>
             </div>
 
-            <div className="dark-card hover-float" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)' }}>Access to passive talent</h3>
-              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0 }}>
+            <div className="dark-card hover-float magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.3)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', fontWeight: '600', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)', position: 'relative', zIndex: 2 }}>Access to passive talent</h3>
+              <p style={{ color: '#cbd5e1', fontSize: '0.925rem', lineHeight: '1.6', fontWeight: '300', margin: 0, position: 'relative', zIndex: 2 }}>
                 Reach exceptional professionals who aren't actively looking but are open to the right opportunity.
               </p>
             </div>
@@ -255,7 +289,7 @@ export default function LandingPage() {
       {/* ==========================================
          TESTIMONIALS SECTION
          ========================================== */}
-      <section id="about" style={{ padding: '100px 24px', background: 'transparent' }} className="scroll-reveal">
+      <section id="about" style={{ padding: '100px 24px', background: 'transparent' }} className="scroll-reveal reveal-on-scroll">
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
@@ -267,14 +301,14 @@ export default function LandingPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '40px' }}>
             
-            <div className="glass-panel" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <div style={{ display: 'flex', gap: '4px', color: 'var(--color-gold)', marginBottom: '16px' }}>
+            <div className="glass-panel magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
+              <div style={{ display: 'flex', gap: '4px', color: 'var(--color-gold)', marginBottom: '16px', position: 'relative', zIndex: 2 }}>
                 <Award size={16} /><Award size={16} /><Award size={16} /><Award size={16} /><Award size={16} />
               </div>
-              <p style={{ fontStyle: 'italic', color: '#cbd5e1', lineHeight: '1.65', fontSize: '0.95rem', fontWeight: '300' }}>
+              <p style={{ fontStyle: 'italic', color: '#cbd5e1', lineHeight: '1.65', fontSize: '0.95rem', fontWeight: '300', position: 'relative', zIndex: 2 }}>
                 &ldquo;PitchHire delivered quality over quantity. Instead of dozens of resumes, we received a handful of thoroughly vetted candidates and closed the role in less than two weeks.&rdquo;
               </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '24px', position: 'relative', zIndex: 2 }}>
                 <div style={{ width: '40px', height: '40px', borderRadius: '0px', border: '1px solid rgba(197, 162, 93, 0.25)', background: 'rgba(197, 162, 93, 0.05)', color: 'var(--color-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontFamily: 'var(--font-serif)' }}>
                   SM
                 </div>
@@ -285,14 +319,14 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="glass-panel" style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
-              <div style={{ display: 'flex', gap: '4px', color: 'var(--color-gold)', marginBottom: '16px' }}>
+            <div className="glass-panel magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '32px', background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)' }}>
+              <div style={{ display: 'flex', gap: '4px', color: 'var(--color-gold)', marginBottom: '16px', position: 'relative', zIndex: 2 }}>
                 <Award size={16} /><Award size={16} /><Award size={16} /><Award size={16} /><Award size={16} />
               </div>
-              <p style={{ fontStyle: 'italic', color: '#cbd5e1', lineHeight: '1.65', fontSize: '0.95rem', fontWeight: '300' }}>
+              <p style={{ fontStyle: 'italic', color: '#cbd5e1', lineHeight: '1.65', fontSize: '0.95rem', fontWeight: '300', position: 'relative', zIndex: 2 }}>
                 &ldquo;The transparency was refreshing. We always knew where the search stood, what the market looked like, and why candidates were progressing.&rdquo;
               </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '24px', position: 'relative', zIndex: 2 }}>
                 <div style={{ width: '40px', height: '40px', borderRadius: '0px', border: '1px solid rgba(197, 162, 93, 0.25)', background: 'rgba(197, 162, 93, 0.05)', color: 'var(--color-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontFamily: 'var(--font-serif)' }}>
                   KL
                 </div>
@@ -311,7 +345,7 @@ export default function LandingPage() {
       {/* ==========================================
          SOURCING VELOCITY SIMULATOR (INTERACTIVE WIDGET)
          ========================================== */}
-      <section id="process" style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.3)', borderTop: '1px solid rgba(255,255,255,0.06)' }} className="scroll-reveal">
+      <section id="process" style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.3)', borderTop: '1px solid rgba(255,255,255,0.06)' }} className="scroll-reveal reveal-on-scroll">
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
@@ -324,10 +358,10 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="dark-card" style={{ padding: '40px', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="dark-card magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '40px', border: '1px solid rgba(255,255,255,0.06)' }}>
             
             {/* Slider control */}
-            <div style={{ marginBottom: '40px' }}>
+            <div style={{ marginBottom: '40px', position: 'relative', zIndex: 2 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '14px', alignItems: 'center' }}>
                 <span style={{ fontSize: '0.8rem', color: '#cbd5e1', fontWeight: '600', letterSpacing: '0.05em' }}>SEARCH TIMELINE:</span>
                 <span style={{ fontSize: '1.4rem', color: 'var(--color-gold)', fontWeight: '700', fontFamily: 'var(--font-serif)' }}>
@@ -345,8 +379,10 @@ export default function LandingPage() {
             </div>
 
             {/* Visual node grid */}
-            <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '40px 0', minHeight: '80px' }}>
-              <div className="node-line"></div>
+            <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '40px 0', minHeight: '80px', zIndex: 2 }}>
+              <div className="node-line">
+                <div className="node-line-active" style={{ width: `${Math.min(100, Math.max(0, ((sourcingDays - 1) / 4) * 100))}%` }}></div>
+              </div>
               
               {/* Node 1 */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
@@ -404,7 +440,7 @@ export default function LandingPage() {
       {/* ==========================================
          FAQ SECTION
          ========================================== */}
-      <section style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.4)', borderTop: '1px solid rgba(255,255,255,0.06)' }} className="scroll-reveal">
+      <section style={{ padding: '100px 24px', background: 'rgba(15, 16, 20, 0.4)', borderTop: '1px solid rgba(255,255,255,0.06)' }} className="scroll-reveal reveal-on-scroll">
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
@@ -417,19 +453,20 @@ export default function LandingPage() {
               return (
                 <div 
                   key={idx} 
-                  className="glass-panel" 
-                  style={{ background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)', padding: '20px 24px', cursor: 'pointer', transition: 'var(--transition-smooth)' }}
+                  className="glass-panel magnetic-glow-card" 
+                  onMouseMove={handleMouseMove}
+                  style={{ background: 'rgba(20, 21, 26, 0.4)', borderColor: 'rgba(255,255,255,0.06)', padding: '20px 24px', cursor: 'pointer', transition: 'var(--transition-smooth)', position: 'relative' }}
                   onClick={() => setActiveFaq(isOpen ? null : idx)}
                 >
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 2 }}>
                     <h4 style={{ fontSize: '1.05rem', fontWeight: '600', color: '#fff', fontFamily: 'var(--font-serif)' }}>{faq.q}</h4>
                     <ChevronDown size={18} color="var(--color-gold)" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
                   </div>
-                  {isOpen && (
-                    <p style={{ marginTop: '12px', fontSize: '0.925rem', color: '#cbd5e1', lineHeight: '1.65', fontWeight: '300', animation: 'fadeIn 0.2s ease-out' }}>
+                  <div className={`faq-answer-wrapper ${isOpen ? 'open' : ''}`} style={{ position: 'relative', zIndex: 2 }}>
+                    <p style={{ marginTop: '12px', fontSize: '0.925rem', color: '#cbd5e1', lineHeight: '1.65', fontWeight: '300', margin: '12px 0 0 0' }}>
                       {faq.a}
                     </p>
-                  )}
+                  </div>
                 </div>
               );
             })}
@@ -442,7 +479,7 @@ export default function LandingPage() {
          CONTACT / LEAD CAPTURE FORM
          ========================================== */}
       <section id="contact" style={{ padding: '100px 24px', background: 'transparent', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto' }} className="scroll-reveal">
+        <div style={{ maxWidth: '640px', margin: '0 auto' }} className="scroll-reveal reveal-on-scroll">
           
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span className="badge badge-success" style={{ marginBottom: '12px', background: 'rgba(197, 162, 93, 0.08)', color: 'var(--color-gold)', borderColor: 'rgba(197, 162, 93, 0.2)', borderRadius: '0px' }}>Final CTA</span>
@@ -459,7 +496,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="glass-panel" style={{ padding: '40px', background: 'rgba(20, 21, 26, 0.55)', borderColor: 'rgba(255,255,255,0.06)' }}>
+          <div className="glass-panel magnetic-glow-card" onMouseMove={handleMouseMove} style={{ padding: '40px', background: 'rgba(20, 21, 26, 0.55)', borderColor: 'rgba(255,255,255,0.06)' }}>
             
             {/* Form type tabs */}
             <div style={{ display: 'flex', background: 'rgba(255,255,255,0.01)', borderRadius: '0px', padding: '4px', marginBottom: '32px', border: '1px solid rgba(255,255,255,0.06)' }}>
